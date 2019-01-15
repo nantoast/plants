@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Гид по подаркам</title>
+<style>
+	body {
+		font-family: "Arial", sans-serif;
+		min-width:800px;
+		min-height:100vh;
+		background-color:rgb(237, 251, 244);
+		display: flex;
+		flex-wrap:wrap;
+	}
+	header {
+		text-align: center;
+		margin:30px 0;
+		font-size: 1.5em;
+		width:100%;
+	}
+	.wrap {
+		width:100%;
+		display:flex;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		justify-content:center;
+	}
+	.main {
+		display:flex;
+		flex-wrap: nowrap;
+		width:70%;
+		justify-content: flex-start;
+		margin-bottom:100px;
+	}
+	.main .menu {
+		background-color: rgb(162, 234, 198);
+		margin-left: 20px;
+		margin-right: 20px;
+		font-size: 2em;
+	}
+	.main .menu ul {
+		padding:0;
+		margin:0;
+		list-style-type: none;
+	}
+	.main .menu li {
+		width: 250px;
+		border-bottom: 1px solid rgb(237, 251, 244);
+		-webkit-box-shadow: 0px 1px 0px 0px rgba(3,64,0,1);
+		-moz-box-shadow: 0px 1px 0px 0px rgba(3,64,0,1);
+		box-shadow: 0px 1px 0px 0px rgba(3,64,0,1);
+	}
+	.main .menu label {
+		display:block;
+		width:100%;
+		height:100%;
+		padding:20px 5px 20px;
+		box-sizing:border-box;
+	}
+	.hidden {
+		display:none;
+	}
+	#geraniumchosen:checked ~ .photos .geran img{
+		opacity: 0.75;
+	}
+	#geraniumchosen:checked ~ .photos .geran{
+		background-color:green;
+	}
+	#geraniumchosen:checked ~ .menu .geran{
+		background-color:rgb(53, 196, 124);
+		color: white;
+	}
+	#bonsaichosen:checked ~ .photos .bonsai img{
+		opacity: 0.75;
+	}
+	#bonsaichosen:checked ~ .photos .bonsai{
+		background-color:green;
+	}
+	#bonsaichosen:checked ~ .menu .bonsai{
+		background-color:rgb(53, 196, 124);
+		color: white;
+	}
+	#decembristchosen:checked ~ .photos .dekabrist img{
+		opacity: 0.75;
+	}
+	#decembristchosen:checked ~ .photos .dekabrist{
+		background-color:green;
+	}
+	#decembristchosen:checked ~ .menu .dekabrist{
+		background-color:rgb(53, 196, 124);
+		color: white;
+	}
+	#cactuschosen:checked ~ .photos .cactus img{
+		opacity: 0.75;
+	}
+	#cactuschosen:checked ~ .photos .cactus{
+		background-color:green;
+	}
+	#cactuschosen:checked ~ .menu .cactus{
+		background-color:rgb(53, 196, 124);
+		color: white;
+	}
+	.main .photos {
+		min-width: 250px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content:space-between;
+	}
+	.main .photos div {
+		position:relative;
+	}
+	.main .photos div.type1, div.type3, div.type4, div.type5,div.type7  {
+		width:30%;
+		margin-bottom:5%;
+	}
+	.main .photos div.type2, div.type6  {
+		width:65%;
+		margin-bottom:5%;
+	}
+	.main .photos div.type8 {
+		width:100%;
+		margin-bottom:5%;
+	}
+	.main .photos div.type8:last-child {
+		width:100%;
+		margin-bottom:0;
+	}
+	.main .photos img {
+		width:100%;
+		display:block;
+	}
+	.main .photos .price {
+		visibility:hidden;
+		position: absolute;
+		top: 50%;
+		left:25%;
+		background-color:grey;
+		color:white;
+		font-size:1.2em;
+		padding:5px;
+		z-index:1;
+	}
+	.main .photos div:hover .price {
+		visibility:visible;
+	}
+	.rating {
+		background-color: rgb(162, 234, 198);
+		width:260px;
+		padding:5px 15px 15px 15px;
+		margin-left:20px;
+	}
+	.rating .heading {
+		font-size: 1.5em;
+		color: rgb(169, 29, 29);
+		text-transform: uppercase;
+		margin:0;
+	}
+	.rating .box10 {
+		height: 20px;
+		width: 150px;
+		border: 1px solid black;
+		background-image: linear-gradient(to right, green, white);
+	}
+	.rating .box9 {
+		height: 20px;
+		width: 135px;
+		border: 1px solid black;
+		background-image: linear-gradient(to right, green, white);
+	}
+	.rating .box6 {
+		height: 20px;
+		width: 90px;
+		border: 1px solid black;
+		background-image: linear-gradient(to right, yellow, white);
+	}
+	.rating .box3 {
+		height: 20px;
+		width: 45px;
+		border: 1px solid black;
+		background-image: linear-gradient(to right, red, white);
+	}
+	.rating ul {
+		font-size: 1.5em;
+		padding:0;
+		margin:15px 0 0 0;
+		list-style-type: none;
+		display:flex;
+		flex-wrap: wrap;
+	}
+	.rating li {
+		width:100%;
+	}
+	.rating .name {
+		width:100%;
+	}
+	.rating .block {
+		display:flex;
+		flex-wrap: wrap;
+		justify-content:space-between;
+		margin:10px 0;
+		padding:0;
+		align-items:center;
+	}
+	footer {
+		width:100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 25px 0 25px;
+		border-top: 1px solid grey;
+		box-sizing: border-box;
+		align-self: flex-end;
+	}
+	footer .address {
+		text-decoration: none;
+	}
+	.rating input.checkbox:checked ~ ul li.grade3 {
+		order:4;
+	}
+	.rating input.checkbox:checked ~ ul li.grade6 {
+		order:3;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<h1>Комнатные растения как подарок</h1>
+	</header>
+	<div class="wrap">
+	<form class="main">
+		<input  class="hidden" type="radio" name="flower" id="bonsaichosen" value="bonsai" >
+		<input  class="hidden" type="radio" name="flower" id="geraniumchosen" value="geranium">
+		<input  class="hidden" type="radio" name="flower" id="decembristchosen" value="decembrist">
+		<input  class="hidden" type="radio" name="flower" id="cactuschosen" value="cactus">
+		<div class="menu">
+			<ul>
+				<li><label class="bonsai" for="bonsaichosen">Бонсай</label></li>
+				<li><label class="geran" for="geraniumchosen">Герань</label></li>
+				<li><label class="dekabrist" for="decembristchosen">Декабристы</label></li>
+				<li><label class="cactus" for="cactuschosen">Кактусы</label></li>
+			</ul>
+		</div>
+		<div class="photos">
+			<div class="type1 geran"><img  src="fl/1.jpg" alt="red geranium"> <span class="price">Герань красная,<br> 250 руб/шт</span></div>
+			<div class="type2 geran"><img  src="fl/2.jpg" alt="white geranium"> <span class="price">Герань белая,<br> 500 руб/шт</span></div>
+			<div class="type3 geran"><img  src="fl/3.jpg" alt="rose geranium"> <span class="price">Герань розовая,<br> 200 руб/шт</span></div>
+			<div class="type4 dekabrist"><img  src="fl/4.jpg" alt="rose zygocactus"> <span class="price">Декабрист розовый,<br> 100 руб/шт</span></div>
+			<div class="type5 dekabrist"><img  src="fl/5.jpg" alt="red and white zygocactus"> <span class="price">Декабрист микс,<br> 180 руб/шт</span></div>
+			<div class="type6 cactus"><img  src="fl/6.jpg" alt="different cacti"> <span class="price">Кактус (в асс.),<br> 50 руб/шт</span> </div>
+			<div class="type7 bonsai"><img  src="fl/7.jpg" alt="bonsai tree"> <span class="price">Бонсай хвойный,<br> 3500 руб/шт</span> </div>
+			<div class="type8 bonsai"><img  src="fl/8.jpg" alt="three bonsai trees"> <span class="price">Бонсай лиственный(в асс.),<br> 5500 руб/шт</span> </div>
+		</div>
+	</form>
+		<div class="rating">
+			<p class="heading">Рейтинг</p>
+			<form>
+				По убыванию
+				<input class="checkbox" type="checkbox" name="hightolow" value="hightolow">
+			<ul>
+				<li class="grade10">
+					<div class="block">
+						<div class="name">Бонсай</div>
+						<div class="box10"></div>
+						<div>10</div>
+					</div>
+				</li>
+				<li class="grade9">
+					<div class="block">
+						<div class="name">Герань</div>
+						<div class="box9"></div>
+						<div>9</div>
+					</div>
+				</li>
+				<li class="grade3">
+					<div class="block">
+						<div class="name">Декабристы</div>
+						<div class="box3"></div>
+						<div>3</div>
+					</div>
+				</li>
+				<li class="grade6">
+					<div class="block">
+						<div class="name">Кактусы</div>
+						<div class="box6"></div>
+						<div>6</div>
+					</div>
+				</li>
+			</ul>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<div> &copy ООО "Мастера подарков", 2018</div>
+		<div> <a class="address" href="#">Наш адрес: 16-я Парковая, сельскохозяйственный комплекс &quotРедуты Петра&quot </a></div>
+	</footer>
+</body>
+</html>
